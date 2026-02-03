@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Happy Valentine’s Day ❤️</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      color: white;
+    }
+
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      padding: 30px;
+      border-radius: 20px;
+      text-align: center;
+      width: 90%;
+      max-width: 420px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+      animation: fadeIn 1.5s ease;
+    }
+
+    h1 {
+      font-size: 2.2em;
+      margin-bottom: 10px;
+    }
+
+    p {
+      font-size: 1.1em;
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background: #ff4d6d;
+      border: none;
+      padding: 15px 25px;
+      border-radius: 30px;
+      font-size: 1.1em;
+      color: white;
+      cursor: pointer;
+      transition: transform 0.2s, background 0.2s;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      background: #ff2f5e;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .heart {
+      position: absolute;
+      color: rgba(255,255,255,0.8);
+      font-size: 20px;
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-800px) scale(1.5);
+        opacity: 0;
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container" id="card">
+    <h1>Hey my love ❤️</h1>
+    <p>
+      Every day with you feels like my favorite place to be.
+      You are my best friend, my safe place, and my forever.
+    </p>
+
+    <button onclick="reveal()">Click me 💕</button>
+  </div>
+
+  <div class="container hidden" id="reveal">
+    <h1>Will you be my Valentine? 💌</h1>
+    <p>
+      Not just today.  
+      Not just this year.  
+      But every single day I’m lucky enough to call you mine.
+    </p>
+
+    <button onclick="finalMessage()">Yes, always ❤️</button>
+  </div>
+
+  <div class="container hidden" id="final">
+    <h1>I love you endlessly 💖</h1>
+    <p>
+      You are my heart, my home, and my greatest love story.
+      Thank you for being you.
+    </p>
+  </div>
+
+  <script>
+    function reveal() {
+      document.getElementById("card").classList.add("hidden");
+      document.getElementById("reveal").classList.remove("hidden");
+      startHearts();
+    }
+
+    function finalMessage() {
+      document.getElementById("reveal").classList.add("hidden");
+      document.getElementById("final").classList.remove("hidden");
+    }
+
+    function startHearts() {
+      setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-20px";
+        heart.style.fontSize = Math.random() * 20 + 15 + "px";
+        document.body.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 6000);
+      }, 300);
+    }
+  </script>
+
+</body>
+</html>
